@@ -1,1 +1,1 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+[![Deploy to GitHub Pages](https://github.com/MahrRah/MahrRah.github.io/actions/workflows/gh-pages.deploy.yml/badge.svg)](https://github.com/MahrRah/MahrRah.github.io/actions/workflows/gh-pages.deploy.yml)
