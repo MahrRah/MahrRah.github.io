@@ -1,19 +1,16 @@
 import Head from 'next/head'
 import Container from "@mui/material/Container";
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Startup from './Startup';
 
-import Image from './bg.png'; // Import using relative path
+
 
 
 export default function Home() {
-  const styles = {
-    paperContainer: {
-      backgroundImage: `url(${Image})`
-    }
-  };
+
+ 
   return (
     <>
       <Head>
@@ -30,15 +27,16 @@ export default function Home() {
         <main>
           <Box sx={{ display: 'flex', alignItems: 'center',justifyContent:'center' }}>
             <Typography className="title">
-              Comming soon 
+              Coming soon 
             </Typography>
           </Box>
+
+          <Startup />
 
         </main>
         <Box
           component="footer"
           textAlign='center'
-          style={styles.paperContainer}
           sx={{
             py: 3,
             px: 2,
