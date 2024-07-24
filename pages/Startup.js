@@ -10,13 +10,14 @@ const color_hex = "#2306f9";
 
 const Icosahedron = () => (
     <mesh rotation-x={0.35}>
-        <icosahedronGeometry args={[1, 0]} />
+        <icosahedronGeometry args={[1, 1]} />
         <meshBasicMaterial vertexColors color={color_hex} />
     </mesh>
 );
 
 const Star = ({ p }) => {
     const ref = useRef(null);
+    const { clock } = useThree();
 
     useLayoutEffect(() => {
         const distance = mix(2, 3.5, Math.random());
@@ -29,9 +30,17 @@ const Star = ({ p }) => {
         ref.current.position.setFromSphericalCoords(distance, yAngle, xAngle);
     });
 
+    useFrame(({ clock }) => {
+        const elapsedTime = clock.getElapsedTime();
+        const distance = mix(1, 0.1, elapsedTime / 1000000); // Adjust the values as needed
+        const currentLength = ref.current.position.length();
+        ref.current.position.setLength(currentLength * distance);
+    });
+
+
     return (
         <mesh ref={ref}>
-            <boxGeometry args={[0.05, 0.05, 0.05]} />
+            <icosahedronGeometry args={[0.05, 0]} />
             <meshBasicMaterial color={color} />
         </mesh>
     );
