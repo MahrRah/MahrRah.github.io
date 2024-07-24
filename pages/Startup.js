@@ -32,7 +32,7 @@ const Star = ({ p }) => {
 
     useFrame(({ clock }) => {
         const elapsedTime = clock.getElapsedTime();
-        const distance = mix(1, 0.1, elapsedTime / 1000000); // Adjust the values as needed
+        const distance = mix(1, 0.5, elapsedTime / 1000000); // Adjust the values as needed
         const currentLength = ref.current.position.length();
         ref.current.position.setLength(currentLength * distance);
     });
