@@ -83,36 +83,27 @@ const Star = ({ p, radius, color }) => {
 
 
 
-function Scene({ numStars = 200 }) {
+function Scene({ numStars = 200}) {
     const gl = useThree((state) => state.gl);
-    const { scrollYProgress } = useScroll();
-    const yAngle = useTransform(
-        scrollYProgress,
-        [0, 1],
-        [0.0001, degreesToRadians(90)]
-    );
-    const distance = useTransform(scrollYProgress, [0, 1], [10, 8]);
     const time = useTime();
 
     useFrame(({ camera }) => {
-
         camera.position.setFromSphericalCoords(
-            distance.get(),
-            yAngle.get(),
+            8,
+            degreesToRadians(90),
             time.get() * 0.0001
         );
         camera.updateProjectionMatrix();
-        camera.updateProjectionMatrix();
         camera.lookAt(0, 0, 0);
-
-
+    
+        
     });
 
     useLayoutEffect(() => gl.setPixelRatio(window.devicePixelRatio));
 
     const stars = [];
     for (let i = 0; i < numStars; i++) {
-        stars.push(<Star p={progress(0, numStars, i)} radius="0.05" color={colors[0]} />);
+        stars.push(<Star p={progress(0, numStars, i)} radius="0.05" color={colors[0]}/>);
     }
     const clouds = [];
     for (let i = 0; i < numStars; i++) {
@@ -124,7 +115,7 @@ function Scene({ numStars = 200 }) {
         blobs.push(<Star p={progress(0, numStars, i)} radius="0.03" color={colors[2]} />);
     }
     const accretionDiscs = [];
-    for (let i = 0; i < numStars * 5; i++) {
+    for (let i = 0; i < numStars*5; i++) {
         accretionDiscs.push(<AccretionDisc p={progress(0, numStars, i)} />);
     }
     return (
@@ -138,13 +129,12 @@ function Scene({ numStars = 200 }) {
     );
 }
 
-export default function Blackhole({ numStars = 200}) {
+export default function BlackholeStatic({ numStars = 200 }) {
     return (
-        <div className="container">
-
+        <div className="container" >
             <Canvas gl={{ antialias: true }}>
                 <ambientLight intensity={10} />
-                <Scene numStars={numStars}  />
+                <Scene numStars={numStars} />
             </Canvas>
         </div>
     );
