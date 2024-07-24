@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Container from "@mui/material/Container";
-import Startup from './components/Startup';
+import Blackhole from './components/Blackhole';
 import Navigation from './components/Navigation';
 import Banner from './components/Banner';
 
@@ -20,7 +20,7 @@ export default function Home() {
       }}>
         <main>
           <Banner />
-          <Startup />
+          <Blackhole />
           
         </main>
         <Navigation />
