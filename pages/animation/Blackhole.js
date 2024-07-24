@@ -34,14 +34,14 @@ const AccretionDisc = ({ p }) => {
 
     return (
         <mesh ref={ref}>
-            <icosahedronGeometry args={[0.01, 3]} />
+            <icosahedronGeometry args={[0.05, 3]} />
             <meshBasicMaterial color={color_cloud} />
         </mesh>
     );
 };
 
 
-const Icosahedron = () => (
+const Singularity = () => (
     <mesh rotation-x={0.35}>
         <sphereGeometry args={[0.5, 32]} />
         <meshLambertMaterial color={color_blackhole} />
@@ -87,7 +87,7 @@ function Scene({ numStars = 200 }) {
     const yAngle = useTransform(
         scrollYProgress,
         [0, 1],
-        [0.001, degreesToRadians(180)]
+        [0.0001, degreesToRadians(180)]
     );
     const distance = useTransform(scrollYProgress, [0, 1], [10, 5]);
     const time = useTime();
@@ -102,7 +102,7 @@ function Scene({ numStars = 200 }) {
         camera.lookAt(0, 0, 0);
     });
 
-    useLayoutEffect(() => gl.setPixelRatio(0.3));
+    useLayoutEffect(() => gl.setPixelRatio(window.devicePixelRatio));
 
     const stars = [];
     for (let i = 0; i < numStars; i++) {
@@ -114,7 +114,7 @@ function Scene({ numStars = 200 }) {
     }
     return (
         <>
-            <Icosahedron />
+            <Singularity />
             {accretionDiscs}
             {stars}
         </>
@@ -125,7 +125,7 @@ export default function Startup({ numStars = 100 }) {
     return (
         <div className="container">
 
-            <Canvas gl={{ antialias: false }}>
+            <Canvas gl={{ antialias: true }}>
                 <ambientLight intensity={10} />
                 <Scene />
             </Canvas>
