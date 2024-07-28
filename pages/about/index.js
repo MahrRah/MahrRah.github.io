@@ -56,6 +56,7 @@ export default function About() {
     },
   };
 
+  const aboutMe = "Hi there, I am Mahra, a Software Engineer at Microsoft with a background in astrophysics. Basically a physics nerd who has lost her way in the world of tech. I used to analyze emissions from galaxies containing active supermassive black holes. Now I work on various cloud based solution as part of a Microsoft ISE team. They range from cloud to edge-based application for manufacturing use-cases, to LLM based code generation solutions."
   return (
     <div style={styles.app}>
       <div style={styles.topSection}>
