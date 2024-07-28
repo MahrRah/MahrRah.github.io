@@ -1,24 +1,17 @@
 'use client';
-import React, { useRef, useLayoutEffect, useMemo } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { useTransform, useScroll, useTime } from 'framer-motion';
-import { degreesToRadians, progress, mix } from 'popmotion';
-import * as THREE from 'three';
+import { degreesToRadians, progress } from 'popmotion';
 import AccretionDiskCloud from './AccrestionDiskCloud';
 import Cloud from './GalacticCloud';
+import Singularity from './Singularity';
 
 // Color definitions
 const colors = ['#2F302E', '#616064', '#5C4F43', '#353F4C', '#6A6151'];
 const colorBlackhole = '#000000';
 const colorAccretion = '#E8E6E6';
 
-
-const Singularity = ({ color , radius}) => (
-    <mesh rotation-x={0.35}>
-        <sphereGeometry args={[radius, 32]} />
-        <meshLambertMaterial color={color} />
-    </mesh>
-);
 
 // Scene component
 const Scene = ({ numStars = 200 }) => {
@@ -78,7 +71,7 @@ const Scene = ({ numStars = 200 }) => {
 
     return (
         <>
-            <Singularity color={{colorBlackhole}} radius={0.5} />
+            <Singularity color={{ colorBlackhole }} radius={0.5} />
             {createAccretionDisk(numStars * 2, 0.01, colorAccretion)}
             {createStars(numStars, 0.01, colors[1])}
             {createStars(numStars, 0.03, colors[2])}
