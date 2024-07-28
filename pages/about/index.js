@@ -64,7 +64,7 @@ export default function About() {
         </div>
         <div style={styles.aboutMe}>
 
-          <StyledAvatar alt="User Avatar" src="/path-to-your-avatar-image.jpg" />
+          <StyledAvatar alt="User Avatar" src="/avatar.jpg" />
           <div style={styles.textContainer}>
             <h1 style={styles.heading}>About Me</h1>
             <p style={styles.paragraph}>This is the about me section.</p>

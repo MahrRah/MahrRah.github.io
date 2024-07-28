@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Head>
         <title>Mahra's Website</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <Container sx={{
         display: 'flex',

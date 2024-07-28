@@ -4,12 +4,12 @@ import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { useRef, useLayoutEffect } from "react";
 import { useTransform, useScroll, useTime } from "framer-motion";
 import { degreesToRadians, progress, mix } from "popmotion";
-import dynamic from "next/dynamic";
 
-const color_cloud = "#363c45";
-let colors = ["#453e36", "#40382d", "#3b3224", "#362b1b", "#312511"];
+
+
+let colors = ["#2F302E", "#616064", "#3b3224", "#362b1b", "#312511"];
 const color_blackhole = "#000000";
-const color_accretion = "#a87732";
+const color_accretion = "#E8E6E6";
 
 const AccretionDisc = ({ p }) => {
     const ref = useRef(null);
