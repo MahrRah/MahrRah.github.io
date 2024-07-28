@@ -1,9 +1,9 @@
 // Scene.js
 import React, { useLayoutEffect } from 'react';
-import { Canvas, useThree, useFrame } from '@react-three/fiber';
+import { useThree, useFrame } from '@react-three/fiber';
 import { useTransform, useScroll, useTime } from 'framer-motion';
 import { degreesToRadians } from 'popmotion';
-import BlackHole from './BlackHole'
+import BlackHole from './blackhole/BlackHole'
 
 const Scene = ({
   numStars = 200,
@@ -14,7 +14,7 @@ const Scene = ({
   const gl = useThree((state) => state.gl);
   const { scrollYProgress } = useScroll();
   const yAngle = useTransform(scrollYProgress, [0, 1], [0.0001, degreesToRadians(90)]);
-  const distance = useTransform(scrollYProgress, [0, 1], [10, 8]);
+  const distance = useTransform(scrollYProgress, [0, 1], [10, 5]);
   const time = useTime();
 
   useFrame(({ camera }) => {

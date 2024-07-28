@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { useThree, useFrame } from '@react-three/fiber';
 import { useTransform, useScroll, useTime } from 'framer-motion';
 import { degreesToRadians } from 'popmotion';
-import BlackHole from './BlackHole'
+import BlackHole from './blackhole/BlackHole'
 
 // Scene component
 const StaticScene = ({ numStars = 200,
@@ -19,7 +19,7 @@ const StaticScene = ({ numStars = 200,
 
   useFrame(({ camera }) => {
     camera.position.setFromSphericalCoords(
-      8,
+      5,
       degreesToRadians(90),
       time.get() * 0.0001
     );
