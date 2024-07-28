@@ -93,6 +93,7 @@ function Scene({ numStars = 200}) {
             degreesToRadians(90),
             time.get() * 0.0001
         );
+        camera.fov = 20;
         camera.updateProjectionMatrix();
         camera.lookAt(0, 0, 0);
     
@@ -131,8 +132,8 @@ function Scene({ numStars = 200}) {
 
 export default function BlackholeStatic({ numStars = 200 }) {
     return (
-        <div className="container" >
-            <Canvas gl={{ antialias: true }}>
+        <div className="container" style={{ height: "200px" ,display: "inline"}}>
+            <Canvas gl={{ antialias: true }} >
                 <ambientLight intensity={10} />
                 <Scene numStars={numStars} />
             </Canvas>
