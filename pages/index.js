@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import Scene from './components/BlackholeScene'
+import Scene from '../components/BlackholeScene'
 import Typography from '@mui/material/Typography';
 
 import Button from '@mui/material/Button';
