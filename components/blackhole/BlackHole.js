@@ -6,26 +6,25 @@ import Singularity from './Singularity';
 import { progress } from 'popmotion';
 
 const BlackHole = ({
-  numStars = 200,
-  colors = ['#2F302E', '#616064', '#5C4F43', '#353F4C', '#6A6151'],
+  colors = ['#2F302E', '#5F6263', '#302B4C', '#4D4636', '#6A6151', '#8C7746', '#BCCEE2'],
   colorBlackhole = '#000000',
   colorAccretion = '#E8E6E6'
 }) => {
-  const createStars = (count, radius, color) =>
+  const createStars = (count, radius, minRadius, maxRadius, color) =>
     Array.from({ length: count }, (_, i) => (
       <Cloud
         key={i}
-        p={progress(0, numStars, i)}
         radius={radius}
+        p={progress(0, count, i)}
         color={color}
-        initialMinRadius={2}
-        initialMaxRadius={3.5}
+        initialMinRadius={minRadius}
+        initialMaxRadius={maxRadius}
         minYAngle={80}
         maxYAngle={100}
         minDistance={1}
         maxDistance={0.3}
-        distanceDuration={10000000}
-        rotationSpeed={0.01}
+        distanceDuration={100000000}
+        rotationSpeed={0.001}
       />
     ));
 
@@ -33,7 +32,7 @@ const BlackHole = ({
     Array.from({ length: count }, (_, i) => (
       <AccretionDiskCloud
         key={i}
-        p={progress(0, numStars, i)}
+        p={progress(0, count, i)}
         color={color}
         initialMinRadius={radius}
         initialMaxRadius={3.0}
@@ -41,22 +40,26 @@ const BlackHole = ({
         maxYAngle={95}
         minOpacity={0.0001}
         maxOpacity={1}
-        opacityIncrement={0.03}
+        opacityIncrement={0.1}
         rotationSpeed={0.01}
-        gravityMin={0.1}
+        gravityMin={0.01}
         gravityMax={1}
-        gravityDuration={10000}
-        resetDistance={0.1}
+        gravityDuration={10000000}
+        resetDistance={0.6}
       />
     ));
 
   return (
     <>
       <Singularity color={colorBlackhole} radius={0.5} />
-      {createAccretionDisk(numStars * 2, 0.01, colorAccretion)}
-      {createStars(numStars, 0.01, colors[1])}
-      {createStars(numStars, 0.03, colors[2])}
-      {createStars(numStars, 0.05, colors[0])}
+      {createAccretionDisk(200 * 2, 0.01, colorAccretion)}
+      {createStars(100, 0.05, 2, 3.5, colors[0])}
+      {createStars(100, 0.01, 2, 3.5, colors[1])}
+      {createStars(200, 0.02, 2, 4.5, colors[2])}
+      {createStars(200, 0.03, 2, 4.5, colors[3])}
+      {createStars(200, 0.03, 2, 4.5, colors[4])}
+      {createStars(100, 0.01, 2, 4.5, colors[5])}
+      {createStars(100, 0.01, 2, 4.5, colors[6])}
     </>
   );
 };

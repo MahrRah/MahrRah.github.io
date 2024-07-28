@@ -24,6 +24,10 @@ body {
     color: var(--off-white);
   }
   
+  @font-face {
+    font-family: 'lemon-milk';
+    src: url('/font/lemon-milk.ttf');
+}
   * {
     font-family: sofia-pro, sans-serif;
     font-weight: 400;

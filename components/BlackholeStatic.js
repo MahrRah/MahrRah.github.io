@@ -21,7 +21,7 @@ const StaticScene = ({ numStars = 200,
     camera.position.setFromSphericalCoords(
       5,
       degreesToRadians(90),
-      time.get() * 0.0001
+      time.get() * 0.00001
     );
     camera.fov = 20;
     camera.updateProjectionMatrix();

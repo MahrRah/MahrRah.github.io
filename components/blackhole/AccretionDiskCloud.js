@@ -72,9 +72,12 @@ const AccretionDiskCloud = ({
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
+    const dampingFactor = 0.99; // Adjust this value to control the damping effect
     const gravity = mix(gravityMax, gravityMin, elapsedTime / gravityDuration);
     const currentLength = ref.current.position.length();
-    ref.current.position.setLength(currentLength * gravity);
+
+    // Apply damping factor to prevent indefinite acceleration
+    ref.current.position.setLength(currentLength * gravity * dampingFactor);
 
     ref.current.position.applyAxisAngle(
       new THREE.Vector3(0, 1, 0),
@@ -89,7 +92,8 @@ const AccretionDiskCloud = ({
     }
 
     material.uniforms.opacity.value = opacity.current.value;
-  });
+});
+
 
   return (
     <mesh ref={ref}>
