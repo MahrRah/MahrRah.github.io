@@ -23,7 +23,7 @@ export default function About() {
     },
     aboutMe: {
       position: 'absolute',
-      top: '110%', // Centers the box vertically within the top section
+      top: '130%', // Centers the box vertically within the top section
       left: '15px', // Centers the box horizontally (50% width, so offset by 25%)
       transform: 'translateY(-50%)', // Adjusts for the height of the box
       width: '50vw', // Sets the width to 50% of the viewport width
