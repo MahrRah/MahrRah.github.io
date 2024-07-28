@@ -1,12 +1,12 @@
-'use client';
+// Scene.js
 import React, { useLayoutEffect } from 'react';
-import { useThree, useFrame } from '@react-three/fiber';
+import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { useTransform, useScroll, useTime } from 'framer-motion';
 import { degreesToRadians } from 'popmotion';
 import BlackHole from './BlackHole'
 
-// Scene component
-const StaticScene = ({ numStars = 200,
+const Scene = ({
+  numStars = 200,
   colors,
   colorBlackhole,
   colorAccretion
@@ -18,12 +18,7 @@ const StaticScene = ({ numStars = 200,
   const time = useTime();
 
   useFrame(({ camera }) => {
-    camera.position.setFromSphericalCoords(
-      8,
-      degreesToRadians(90),
-      time.get() * 0.0001
-    );
-    camera.fov = 20;
+    camera.position.setFromSphericalCoords(distance.get(), yAngle.get(), time.get() * 0.0001);
     camera.updateProjectionMatrix();
     camera.lookAt(0, 0, 0);
   });
@@ -42,5 +37,4 @@ const StaticScene = ({ numStars = 200,
   );
 };
 
-
-export default StaticScene;
+export default Scene;

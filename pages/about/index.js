@@ -1,8 +1,10 @@
 
 
-import Blackhole from '../components/BlackholeStatic';
 import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/system';
+import StaticScene from '../components/BlackholeStatic'
+import { Canvas } from '@react-three/fiber';
+
 
 export default function About() {
   const StyledAvatar = styled(Avatar)({
@@ -57,11 +59,24 @@ export default function About() {
   };
 
   const aboutMe = "Hi there, I am Mahra, a Software Engineer at Microsoft with a background in astrophysics. Basically a physics nerd who has lost her way in the world of tech. I used to analyze emissions from galaxies containing active supermassive black holes. Now I work on various cloud based solution as part of a Microsoft ISE team. They range from cloud to edge-based application for manufacturing use-cases, to LLM based code generation solutions."
+  const numStars = 200,
+  colors = ['#2F302E', '#616064', '#5C4F43', '#353F4C', '#6A6151'],
+  colorBlackhole = '#000000',
+  colorAccretion = '#E8E6E6'
   return (
     <div style={styles.app}>
       <div style={styles.topSection}>
         <div style={styles.canvasWrapper}>
-          <Blackhole status="static" />
+        <Canvas gl={{ antialias: true }}>
+              <ambientLight intensity={0.01} />
+              <StaticScene
+                numStars={numStars}
+                colors={colors}
+                colorBlackhole={colorBlackhole}
+                colorAccretion={colorAccretion}
+              />
+            </Canvas>
+
         </div>
         <div style={styles.aboutMe}>
 
