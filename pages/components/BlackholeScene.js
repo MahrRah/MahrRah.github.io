@@ -19,6 +19,7 @@ const Scene = ({
 
   useFrame(({ camera }) => {
     camera.position.setFromSphericalCoords(distance.get(), yAngle.get(), time.get() * 0.0001);
+    // camera.fov = 35;
     camera.updateProjectionMatrix();
     camera.lookAt(0, 0, 0);
   });
