@@ -61,6 +61,7 @@ export default function About() {
     paragraph: {
       margin: '0',
       fontSize: '16px',
+      textAlign: 'justify',
     },
     canvasWrapper: {
       position: 'absolute',
