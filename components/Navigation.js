@@ -17,9 +17,10 @@ const styles = {
     gap: '0.5rem', // Space between buttons
   }),
   button: {
-    fontSize: '30px',
+    fontSize: '25px',
     fontFamily: 'lemon-milk',
     color: '#E8E6E6',
+    width: '120px',
     borderColor: '#E8E6E6',
     borderRadius: 28,
     backgroundColor: '#000000',
