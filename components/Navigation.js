@@ -1,7 +1,7 @@
 // components/NavigationBar.js
 import React from 'react';
 import Button from '@mui/material/Button';
-
+import { Page } from '../components/PagesEnum';
 const styles = {
   navigation: (isVisible) => ({
     position: 'fixed',
@@ -27,10 +27,10 @@ const styles = {
   },
 };
 
-const NavigationBar = ({ isVisible =true , isHome=true}) => (
+const NavigationBar = ({ isVisible = true, currentPage = Page.Home, setPage }) => (
   <div style={styles.navigation(isVisible)}>
-    {isHome && <Button variant="outlined" sx={styles.button} href="/">Home</Button>}
-    <Button variant="outlined" sx={styles.button} href="/about">About</Button>
+    {currentPage!=Page.Home && <Button variant="outlined" sx={styles.button} onClick={() => setPage(Page.Home)}>Home</Button>}
+    <Button variant="outlined" sx={styles.button} onClick={() => setPage(Page.About)} >About</Button>
     <Button variant="outlined" sx={styles.button} href="https://dev.to/mahrrah">Blog</Button>
   </div>
 );
