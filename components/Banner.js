@@ -31,10 +31,12 @@ const StyledAvatar = styled(Avatar)({
   marginBottom: -20,
 });
 
+// const text = 'Hello There, World!';
+const text = 'Coding, coffee, and a sprinkle of stardust!';
 const Banner = ({ isHidden }) => (
   <div style={styles.banner(isHidden)}>
     <StyledAvatar alt="User Avatar" src="/logo.png" />
-    <h1 style={styles.heading}> Hello There, World!</h1>
+    <h1 style={styles.heading}> {text}</h1>
   </div>
 );
 
