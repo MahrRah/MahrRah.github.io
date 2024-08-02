@@ -19,6 +19,7 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         zIndex: 1,
+        boxShadow: '10px 0px 50px 5px #151716',
     },
     textContainer: {
         textAlign: 'left',
