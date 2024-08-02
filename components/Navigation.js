@@ -4,13 +4,13 @@ import Button from '@mui/material/Button';
 import { Page } from '../components/PagesEnum';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 const styles = {
-  navigation: (isVisible) => ({
+  navigation: (isHidden) => ({
     position: 'fixed',
     bottom: 0,
     right: 0,
     width: 'auto',
     height: '100vh', // Full viewport height
-    display: isVisible ? 'flex' : 'none',
+    display: isHidden ? 'none' : 'flex' ,
     flexDirection: 'column', // Stack items vertically
     alignItems: 'flex-end', // Align items to the right
     justifyContent: 'center', // Center items vertically
@@ -35,8 +35,8 @@ const styles = {
   },
 };
 
-const NavigationBar = ({ isVisible = true, currentPage = Page.Home, setPage }) => (
-  <div style={styles.navigation(isVisible)}>
+const NavigationBar = ({ isHidden = false, currentPage = Page.Home, setPage }) => (
+  <div style={styles.navigation(isHidden)}>
     <Button variant="outlined" sx={styles.button} onClick={() => setPage(Page.About)} >About</Button>
     <Button variant="outlined" sx={styles.button} href="https://dev.to/mahrrah">Blog</Button>
     {currentPage != Page.Home && <div>
