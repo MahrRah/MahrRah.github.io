@@ -2,6 +2,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import { Page } from '../components/PagesEnum';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 const styles = {
   navigation: (isVisible) => ({
     position: 'fixed',
@@ -25,13 +26,22 @@ const styles = {
     borderRadius: 28,
     backgroundColor: '#000000',
   },
+  upButton: {
+    fontSize: '15px',
+    fontFamily: 'lemon-milk',
+    color: '#E8E6E6',
+    width: '120px',
+    alignContent: 'baseline',
+  },
 };
 
 const NavigationBar = ({ isVisible = true, currentPage = Page.Home, setPage }) => (
   <div style={styles.navigation(isVisible)}>
-    {currentPage!=Page.Home && <Button variant="outlined" sx={styles.button} onClick={() => setPage(Page.Home)}>Home</Button>}
     <Button variant="outlined" sx={styles.button} onClick={() => setPage(Page.About)} >About</Button>
     <Button variant="outlined" sx={styles.button} href="https://dev.to/mahrrah">Blog</Button>
+    {currentPage != Page.Home && <div>
+      <Button variant="text" sx={styles.upButton} startIcon={<KeyboardDoubleArrowUpIcon />} onClick={() => setPage(Page.Home)}>Back Up</Button>
+    </div>}
   </div>
 );
 
