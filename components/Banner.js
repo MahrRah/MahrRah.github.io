@@ -2,7 +2,6 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/system';
-import { color } from 'framer-motion';
 
 const styles = {
   banner: (isHidden) => ({
