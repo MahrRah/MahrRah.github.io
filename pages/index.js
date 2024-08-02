@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useTransform, useScroll, useTime } from 'framer-motion';
+import { useTransform, useScroll, useTime, motion } from 'framer-motion';
 import { degreesToRadians } from 'popmotion';
 import { Page } from '../components/PagesEnum';
 import Scene from '../components/BlackholeScene';
 import Banner from '../components/Banner';
 import NavigationBar from '../components/Navigation';
 import AboutMe from '../components/AboutMe';
+
 
 const styles = {
   topSection: {
@@ -27,7 +28,14 @@ const styles = {
     top: 0,
     left: 0,
     zIndex: -1, // Ensure the canvas is behind other content
-  }
+  },
+  motionDiv: {
+    position: 'fixed',
+    top: '50%', // Adjust this value as needed to position the div vertically
+    left: 0,
+    width: '100%',
+    transform: 'translateY(-50%)', // Center the div vertically
+  },
 };
 
 const HomePage = () => {
@@ -56,15 +64,13 @@ const HomePage = () => {
     setShouldScroll(false);
     setLookAtCoordinates([0, -1, 0]);
     if (page === Page.Home) {
-      setShouldScroll(true);
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+      setShouldScroll(true);
     }
-    else {
+    else if (page === Page.About) {
       window.scroll({ top: document.body.scrollHeight / 2, left: 0, behavior: 'smooth' });
     }
   };
-
-
 
   return (
     <div style={styles.container}>
@@ -79,11 +85,26 @@ const HomePage = () => {
         </div>
       </div>
       <NavigationBar isVisible={isNavVisible} currentPage={currentPage} setPage={switchScene} />
-      {currentPage == Page.About && isNavVisible && <AboutMe />}
+      {currentPage == Page.About && isNavVisible &&
+        <MotionAboutMe />
+      }
     </div>
   );
 };
 
+
+
+
+const MotionAboutMe = () => {
+  const { scrollYProgress } = useScroll();
+  const xTransform = useTransform(scrollYProgress, [0, 0.5], [-window.innerWidth * 0.9, window.innerWidth * 0.01]);
+
+  return (
+    <motion.div style={{ ...styles.motionDiv, x: xTransform }}>
+      <AboutMe />
+    </motion.div>
+  );
+};
 
 
 function CustomCamera({ shouldScroll }) {
