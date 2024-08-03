@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useTransform, useScroll, useTime, motion } from 'framer-motion';
 import { degreesToRadians } from 'popmotion';
-import { Page } from '../components/PagesEnum';
+import { Page } from '../components/util/PagesEnum';
 import Scene from '../components/BlackholeScene';
-import Banner from '../components/Banner';
-import NavigationBar from '../components/Navigation';
-import AboutMe from '../components/AboutMe';
-import Footer from '../components/Footer';
+import BannerMotion from '../components/motion/BannerMotion';
+import AboutMeMotion from '../components/motion/AboutMeMotion';
+import Footer from '../components/base/Footer';
+import NavigationMotion from '../components/motion/NavigationMotion';
 
 const styles = {
   topSection: {
@@ -27,34 +27,22 @@ const styles = {
     top: 0,
     left: 0,
     zIndex: -1,
-  },
-  motionDiv: {
-    position: 'fixed',
-    top: '50%',
-    left: 0,
-    width: '100%',
-    transform: 'translateY(-50%)',
-  },
+  }
 };
 
 const HomePage = () => {
   const [currentPage, setPage] = useState(Page.Home);
-  const [isBannerHidden, setIsBannerHidden] = useState(false);
-  const [isNavHidden, setIsNavHidden] = useState(true);
   const [isFooterHidden, setIsFooterHidden] = useState(true);
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-    setIsBannerHidden(scrollTop > 0);
-    setIsNavHidden(!(scrollTop > window.innerHeight));
 
     if (scrollTop > window.innerHeight) {
       setPage(Page.About);
     } else {
       setPage(Page.Home);
     }
-    
+
   };
 
   useEffect(() => {
@@ -85,24 +73,14 @@ const HomePage = () => {
           </Canvas>
         </div>
       </div>
-      <Banner isHidden={isBannerHidden} />
-      <NavigationBar isHidden={isNavHidden} currentPage={currentPage} setPage={switchScene} />
-      {currentPage === Page.About && <MotionAboutMe />}
-      {!isFooterHidden && <Footer isHidden={isFooterHidden} />}
+      <BannerMotion scrollRange={[0, 0.2, 1]} opacityRange={[1, 0, 0]} />
+      <NavigationMotion scrollRange={[0, 0.1, 1]} opacityRange={[0, 1, 1]} currentPage={currentPage} setPage={switchScene} />
+      {currentPage === Page.About && <AboutMeMotion scrollRange={[0, 0.3, 0.6, 1]} xMovementRange={[-window.innerWidth * 0.9, window.innerWidth * 0.01, window.innerWidth * 0.01, -window.innerWidth * 0.9]} />}
+      <Footer isHidden={isFooterHidden} />
     </div>
   );
 };
 
-const MotionAboutMe = () => {
-  const { scrollYProgress } = useScroll();
-  const xTransform = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [-window.innerWidth * 0.9, window.innerWidth * 0.01, window.innerWidth * 0.01, -window.innerWidth * 0.9]);
-
-  return (
-    <motion.div style={{ ...styles.motionDiv, x: xTransform }}>
-      <AboutMe />
-    </motion.div>
-  );
-};
 
 function CustomCamera() {
   const { scrollYProgress } = useScroll();
