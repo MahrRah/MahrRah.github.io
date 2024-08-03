@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install packages
-        run: npm ci --production
+        run: npm ci --omit=dev
       - name: Build project
         run: npm run build
       - name: Add .nojekyll file
