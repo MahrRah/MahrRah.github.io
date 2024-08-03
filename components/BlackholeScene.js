@@ -1,8 +1,6 @@
 // Scene.js
 import React, { useLayoutEffect } from 'react';
-import { useThree, useFrame } from '@react-three/fiber';
-import { useTransform, useScroll, useTime } from 'framer-motion';
-import { degreesToRadians } from 'popmotion';
+import { useThree } from '@react-three/fiber';
 import BlackHole from './blackhole/BlackHole';
 
 const Scene = ({ numStars = 200, colors, colorBlackhole, colorAccretion }) => {
