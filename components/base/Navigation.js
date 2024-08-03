@@ -28,25 +28,24 @@ const styles = {
   },
   upNavigation: {
     position: 'fixed',
-    bottom: '5%',
     right: 0,
+    bottom: '1rem',
     display: 'flex',
     flexDirection: 'column', // Stack items vertically
     alignItems: 'flex-end', // Align items to the right
     justifyContent: 'center', // Center items vertically
   },
-  upButton: {
-    fontSize: '15px',
-    fontFamily: 'lemon-milk',
-    color: '#E8E6E6',
-    width: '120px',
-    position: 'fixed',
-    width: 'auto',
-    display: 'flex',
-    padding: '1rem',
-  },
 };
 
+const upButtonStyles = {
+  fontSize: '15px',
+  fontFamily: 'lemon-milk',
+  color: '#E8E6E6',
+  display: 'flex',
+  padding: '1rem',
+  position: 'fixed',
+  bottom: ['3rem', '3rem', '1rem'], // Array to handle responsive design: [small screens, medium screens, large screens]
+};
 const Navigation = ({ currentPage = Page.Home, setPage }) => (
   <div>
     <div style={styles.navigation}>
@@ -54,8 +53,8 @@ const Navigation = ({ currentPage = Page.Home, setPage }) => (
       <Button variant="outlined" sx={styles.button} onClick={() => setPage(Page.About)} >About</Button>
       <Button variant="outlined" sx={styles.button} href="https://dev.to/mahrrah">Blog</Button>
     </div>
-    {currentPage != Page.Home && <div style={styles.upNavigation}> 
-      <Button variant="text" sx={styles.upButton} startIcon={<KeyboardDoubleArrowUpIcon />} onClick={() => setPage(Page.Home)}>Back Up</Button>
+    {currentPage != Page.Home && <div style={styles.upNavigation}>
+      <Button variant="text" sx={upButtonStyles} startIcon={<KeyboardDoubleArrowUpIcon />} onClick={() => setPage(Page.Home)}>Back Up</Button>
     </div>}
   </div>
 );
