@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useTransform, useScroll, useTime, motion } from 'framer-motion';
+import { useTransform, useScroll, useTime } from 'framer-motion';
 import { degreesToRadians } from 'popmotion';
 import { Page } from '../components/util/PagesEnum';
 import Scene from '../components/BlackholeScene';
 import BannerMotion from '../components/motion/BannerMotion';
 import AboutMeMotion from '../components/motion/AboutMeMotion';
-// import Footer from '../components/base/Footer';
 import NavigationMotion from '../components/motion/NavigationMotion';
 import FooterMotion from '../components/motion/FooterMotion';
 
