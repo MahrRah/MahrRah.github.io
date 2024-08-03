@@ -6,8 +6,9 @@ import { Page } from '../components/util/PagesEnum';
 import Scene from '../components/BlackholeScene';
 import BannerMotion from '../components/motion/BannerMotion';
 import AboutMeMotion from '../components/motion/AboutMeMotion';
-import Footer from '../components/base/Footer';
+// import Footer from '../components/base/Footer';
 import NavigationMotion from '../components/motion/NavigationMotion';
+import FooterMotion from '../components/motion/FooterMotion';
 
 const styles = {
   topSection: {
@@ -32,7 +33,7 @@ const styles = {
 
 const HomePage = () => {
   const [currentPage, setPage] = useState(Page.Home);
-  const [isFooterHidden, setIsFooterHidden] = useState(true);
+
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -62,6 +63,7 @@ const HomePage = () => {
     }
   };
 
+
   return (
     <div style={styles.container}>
       <div style={styles.canvasContainer}>
@@ -76,7 +78,7 @@ const HomePage = () => {
       <BannerMotion scrollRange={[0, 0.2, 1]} opacityRange={[1, 0, 0]} />
       <NavigationMotion scrollRange={[0, 0.1, 1]} opacityRange={[0, 1, 1]} currentPage={currentPage} setPage={switchScene} />
       {currentPage === Page.About && <AboutMeMotion scrollRange={[0, 0.3, 0.6, 1]} xMovementRange={[-window.innerWidth * 0.9, window.innerWidth * 0.01, window.innerWidth * 0.01, -window.innerWidth * 0.9]} />}
-      <Footer isHidden={isFooterHidden} />
+      <FooterMotion  scrollRange={[0, 0.8, 0.8, 1]} yMovementRange={[1000, 1000, 0, 0]}/>
     </div>
   );
 };
