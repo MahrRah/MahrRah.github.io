@@ -29,7 +29,6 @@ const StyledAvatar = styled(Avatar)({
   marginBottom: -20,
 });
 
-
 const text = 'The Byte Life of Mahra...';
 
 const Banner = () => (
