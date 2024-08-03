@@ -28,12 +28,11 @@ const styles = {
     top: 0,
     left: 0,
     zIndex: -1,
-  }
+  },
 };
 
 const HomePage = () => {
   const [currentPage, setPage] = useState(Page.Home);
-
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -43,7 +42,6 @@ const HomePage = () => {
     } else {
       setPage(Page.Home);
     }
-
   };
 
   useEffect(() => {
@@ -59,10 +57,13 @@ const HomePage = () => {
     if (page === Page.Home) {
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     } else if (page === Page.About) {
-      window.scroll({ top: window.innerHeight * 3, left: 0, behavior: 'smooth' });
+      window.scroll({
+        top: window.innerHeight * 3,
+        left: 0,
+        behavior: 'smooth',
+      });
     }
   };
-
 
   return (
     <div style={styles.container}>
@@ -76,13 +77,27 @@ const HomePage = () => {
         </div>
       </div>
       <BannerMotion scrollRange={[0, 0.2, 1]} opacityRange={[1, 0, 0]} />
-      <NavigationMotion scrollRange={[0, 0.1, 1]} opacityRange={[0, 1, 1]} currentPage={currentPage} setPage={switchScene} />
-      {currentPage === Page.About && <AboutMeMotion scrollRange={[0, 0.3, 0.6, 1]} xMovementRange={[-window.innerWidth * 0.9, window.innerWidth * 0.01, window.innerWidth * 0.01, -window.innerWidth * 0.9]} />}
-      <FooterMotion  scrollRange={[0, 0.8, 0.8, 1]} yMovementRange={[1000, 1000, 0, 0]}/>
+      <NavigationMotion
+        scrollRange={[0, 0.1, 1]}
+        opacityRange={[0, 1, 1]}
+        currentPage={currentPage}
+        setPage={switchScene}
+      />
+      {currentPage === Page.About && (
+        <AboutMeMotion
+          scrollRange={[0, 0.3, 0.6, 1]}
+          xMovementRange={[
+            -window.innerWidth * 0.9,
+            window.innerWidth * 0.01,
+            window.innerWidth * 0.01,
+            -window.innerWidth * 0.9,
+          ]}
+        />
+      )}
+      <FooterMotion scrollRange={[0, 0.8, 0.8, 1]} yMovementRange={[1000, 1000, 0, 0]} />
     </div>
   );
 };
-
 
 function CustomCamera() {
   const { scrollYProgress } = useScroll();

@@ -1,6 +1,5 @@
-
 export const Page = Object.freeze({
-    Home: 'home',
-    About: 'about',
-    Footer: 'footer',
+  Home: 'home',
+  About: 'about',
+  Footer: 'footer',
 });

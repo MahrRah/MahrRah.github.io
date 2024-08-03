@@ -9,11 +9,11 @@ const styles = {
     bottom: 0,
     right: 0,
     width: 'auto',
-    height: '100vh', // Full viewport height
+    height: '100vh',
     display: 'flex',
-    flexDirection: 'column', // Stack items vertically
-    alignItems: 'flex-end', // Align items to the right
-    justifyContent: 'center', // Center items vertically
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
     padding: '1rem',
     gap: '0.5rem', // Space between buttons
   },
@@ -32,8 +32,8 @@ const styles = {
     bottom: '1rem',
     display: 'flex',
     flexDirection: 'column', // Stack items vertically
-    alignItems: 'flex-end', // Align items to the right
-    justifyContent: 'center', // Center items vertically
+    alignItems: 'flex-end',
+    justifyContent: 'center',
   },
 };
 
@@ -46,16 +46,29 @@ const upButtonStyles = {
   position: 'fixed',
   bottom: ['3rem', '3rem', '1rem'], // Array to handle responsive design: [small screens, medium screens, large screens]
 };
+
 const Navigation = ({ currentPage = Page.Home, setPage }) => (
   <div>
     <div style={styles.navigation}>
-
-      <Button variant="outlined" sx={styles.button} onClick={() => setPage(Page.About)} >About</Button>
-      <Button variant="outlined" sx={styles.button} href="https://dev.to/mahrrah">Blog</Button>
+      <Button variant="outlined" sx={styles.button} onClick={() => setPage(Page.About)}>
+        About
+      </Button>
+      <Button variant="outlined" sx={styles.button} href="https://dev.to/mahrrah">
+        Blog
+      </Button>
     </div>
-    {currentPage != Page.Home && <div style={styles.upNavigation}>
-      <Button variant="text" sx={upButtonStyles} startIcon={<KeyboardDoubleArrowUpIcon />} onClick={() => setPage(Page.Home)}>Back Up</Button>
-    </div>}
+    {currentPage != Page.Home && (
+      <div style={styles.upNavigation}>
+        <Button
+          variant="text"
+          sx={upButtonStyles}
+          startIcon={<KeyboardDoubleArrowUpIcon />}
+          onClick={() => setPage(Page.Home)}
+        >
+          Back Up
+        </Button>
+      </div>
+    )}
   </div>
 );
 

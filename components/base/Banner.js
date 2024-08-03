@@ -1,4 +1,3 @@
-// components/Banner.js
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/system';
@@ -29,7 +28,6 @@ const StyledAvatar = styled(Avatar)({
   height: 50,
   marginBottom: -20,
 });
-
 
 // const text = 'Hello There, World!';
 const text = 'Coding, coffee, and a sprinkle of stardust!';
