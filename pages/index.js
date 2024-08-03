@@ -91,7 +91,7 @@ const HomePage = () => {
       />
       {currentPage === Page.About && (
         <AboutMeMotion
-          scrollRange={[0.5, 0.7, 0.8, 1]}
+          scrollRange={[0.3, 0.6, 0.8, 1]}
           xMovementRange={[
             -window.innerWidth * 0.9,
             window.innerWidth * 0.01,
