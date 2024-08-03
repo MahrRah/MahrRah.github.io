@@ -30,13 +30,8 @@ const StyledAvatar = styled(Avatar)({
 });
 
 
-// const text = 'Hello There, World!';
-<<<<<<<< HEAD:components/base/Header.js
-// const text = 'Coding, coffee, and a sprinkle of stardust!';
 const text = 'The Byte Life of Mahra...';
-========
-const text = 'Coding, coffee, and a sprinkle of stardust!';
->>>>>>>> origin/main:components/base/Banner.js
+
 const Banner = () => (
   <div style={styles.banner}>
     <StyledAvatar alt="User Avatar" src="/logo.png" />
