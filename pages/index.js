@@ -18,7 +18,7 @@ const styles = {
     backgroundPosition: 'center',
   },
   container: {
-    height: '600vh', // Adjusted height to accommodate all sections and scrolling
+    height: '1000vh', // Adjusted height to accommodate all sections and scrolling
   },
   canvasContainer: {
     height: '30vh',
@@ -45,26 +45,32 @@ const HomePage = () => {
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const windowHeight = window.innerHeight;
-    const scrollThreshold1 = windowHeight * 0.2;
-    const scrollThreshold2 = windowHeight * 0.9 ; // Assuming there are 3 sections in total
 
-    if (scrollTop < scrollThreshold1) {
-      setPage(Page.Home);
-      setIsNavHidden(true);
-      setIsBannerHidden(false);
-      setIsFooterHidden(true);
-    } else if (scrollTop >= scrollThreshold1 && scrollTop < scrollThreshold2) {
-      setPage(Page.About);
-      setIsNavHidden(false);
-      setIsBannerHidden(true);
-      setIsFooterHidden(true);
-    } else {
-      setPage(Page.Footer);
-      setIsNavHidden(false);
-      setIsBannerHidden(true);
-      setIsFooterHidden(false);
-    }
+    setIsBannerHidden(scrollTop > 0);
+    setIsNavHidden(!(scrollTop > window.innerHeight));
+    setPage(scrollTop > window.innerHeight ? Page.About : Page.Home);
+
+
+    // const windowHeight = window.innerHeight;
+    // const scrollThreshold1 = windowHeight * 0.2;
+    // const scrollThreshold2 = windowHeight * 0.9 ; // Assuming there are 3 sections in total
+
+    // if (scrollTop < scrollThreshold1) {
+    //   setPage(Page.Home);
+    //   setIsNavHidden(true);
+    //   setIsBannerHidden(false);
+    //   setIsFooterHidden(true);
+    // } else if (scrollTop >= scrollThreshold1 && scrollTop < scrollThreshold2) {
+    //   setPage(Page.About);
+    //   setIsNavHidden(false);
+    //   setIsBannerHidden(true);
+    //   setIsFooterHidden(true);
+    // } else {
+    //   setPage(Page.Footer);
+    //   setIsNavHidden(false);
+    //   setIsBannerHidden(true);
+    //   setIsFooterHidden(false);
+    // }
   };
 
   useEffect(() => {
@@ -80,7 +86,7 @@ const HomePage = () => {
     if (page === Page.Home) {
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     } else if (page === Page.About) {
-      window.scroll({ top: window.innerHeight, left: 0, behavior: 'smooth' });
+      window.scroll({ top: window.innerHeight * 3, left: 0, behavior: 'smooth' });
     }
   };
 
@@ -105,7 +111,7 @@ const HomePage = () => {
 
 const MotionAboutMe = () => {
   const { scrollYProgress } = useScroll();
-  const xTransform = useTransform(scrollYProgress, [0, 0.5], [-window.innerWidth * 0.9, window.innerWidth * 0.01]);
+  const xTransform = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [-window.innerWidth * 0.9, window.innerWidth * 0.01, window.innerWidth * 0.01, -window.innerWidth * 0.9]);
 
   return (
     <motion.div style={{ ...styles.motionDiv, x: xTransform }}>
