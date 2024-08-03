@@ -41,6 +41,7 @@ const styles = {
     margin: '0',
     fontSize: '16px',
     textAlign: 'justify',
+    textJustify: 'inter-word',
   },
 };
 

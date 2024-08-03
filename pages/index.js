@@ -4,10 +4,11 @@ import { useTransform, useScroll, useTime } from 'framer-motion';
 import { degreesToRadians } from 'popmotion';
 import { Page } from '../components/util/PagesEnum';
 import Scene from '../components/BlackholeScene';
-import BannerMotion from '../components/motion/BannerMotion';
+import HeaderMotion from '../components/motion/HeaderMotion';
 import AboutMeMotion from '../components/motion/AboutMeMotion';
 import NavigationMotion from '../components/motion/NavigationMotion';
 import FooterMotion from '../components/motion/FooterMotion';
+import BannerMotion from '../components/motion/BannerMotion';
 
 const styles = {
   topSection: {
@@ -18,7 +19,7 @@ const styles = {
     backgroundPosition: 'center',
   },
   container: {
-    height: '1000vh', // Adjusted height to accommodate all sections and scrolling
+    height: '2000vh', // Adjusted height to accommodate all sections and scrolling
   },
   canvasContainer: {
     height: '30vh',
@@ -57,7 +58,7 @@ const HomePage = () => {
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     } else if (page === Page.About) {
       window.scroll({
-        top: window.innerHeight * 3,
+        top: window.innerHeight * 15,
         left: 0,
         behavior: 'smooth',
       });
@@ -75,16 +76,21 @@ const HomePage = () => {
           </Canvas>
         </div>
       </div>
-      <BannerMotion scrollRange={[0, 0.2, 1]} opacityRange={[1, 0, 0]} />
+      <HeaderMotion scrollRange={[0, 0.2, 1]} opacityRange={[1, 0, 0]} />
+      <BannerMotion
+        scrollRange={[0, 0.1, 0.2, 1]}
+        xMovementRange={['100%', '30%', '30%', '100%']}
+        opacityRange={[0.2, 1, 1, 0.2]}
+      />
       <NavigationMotion
-        scrollRange={[0, 0.1, 1]}
+        scrollRange={[0, 0.4, 1]}
         opacityRange={[0, 1, 1]}
         currentPage={currentPage}
         setPage={switchScene}
       />
       {currentPage === Page.About && (
         <AboutMeMotion
-          scrollRange={[0, 0.3, 0.6, 1]}
+          scrollRange={[0.5, 0.7, 0.8, 1]}
           xMovementRange={[
             -window.innerWidth * 0.9,
             window.innerWidth * 0.01,
@@ -93,7 +99,7 @@ const HomePage = () => {
           ]}
         />
       )}
-      <FooterMotion scrollRange={[0, 0.8, 0.8, 1]} yMovementRange={[1000, 1000, 0, 0]} />
+      <FooterMotion scrollRange={[0, 0.9, 0.9, 1]} yMovementRange={[1000, 1000, 0, 0]} />
     </div>
   );
 };
