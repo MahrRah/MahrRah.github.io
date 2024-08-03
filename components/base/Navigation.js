@@ -9,19 +9,19 @@ const styles = {
     bottom: 0,
     right: 0,
     width: 'auto',
-    height: '100vh', // Full viewport height
+    height: '100vh',
     display: 'flex',
-    flexDirection: 'column', // Stack items vertically
-    alignItems: 'flex-end', // Align items to the right
-    justifyContent: 'center', // Center items vertically
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
     padding: '1rem',
-    gap: '0.5rem', // Space between buttons
+    gap: '0.5rem',
   },
   button: {
-    fontSize: '25px',
+    fontSize: ['20px', '20px', '25px'],
     fontFamily: 'lemon-milk',
     color: '#E8E6E6',
-    width: '120px',
+    width: ['90px', '90px', '120px'],
     borderColor: '#E8E6E6',
     borderRadius: 28,
     backgroundColor: '#000000',
@@ -32,30 +32,42 @@ const styles = {
     bottom: '1rem',
     display: 'flex',
     flexDirection: 'column', // Stack items vertically
-    alignItems: 'flex-end', // Align items to the right
-    justifyContent: 'center', // Center items vertically
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  upButtonStyles: {
+    fontSize: '15px',
+    fontFamily: 'lemon-milk',
+    color: '#E8E6E6',
+    display: 'flex',
+    right: '1rem',
+    position: 'fixed',
+    bottom: ['3rem', '3rem', '1rem'], // Array to handle responsive design: [small screens, medium screens, large screens]
   },
 };
 
-const upButtonStyles = {
-  fontSize: '15px',
-  fontFamily: 'lemon-milk',
-  color: '#E8E6E6',
-  display: 'flex',
-  padding: '1rem',
-  position: 'fixed',
-  bottom: ['3rem', '3rem', '1rem'], // Array to handle responsive design: [small screens, medium screens, large screens]
-};
 const Navigation = ({ currentPage = Page.Home, setPage }) => (
   <div>
     <div style={styles.navigation}>
-
-      <Button variant="outlined" sx={styles.button} onClick={() => setPage(Page.About)} >About</Button>
-      <Button variant="outlined" sx={styles.button} href="https://dev.to/mahrrah">Blog</Button>
+      <Button variant="outlined" sx={styles.button} onClick={() => setPage(Page.About)}>
+        About
+      </Button>
+      <Button variant="outlined" sx={styles.button} href="https://dev.to/mahrrah">
+        Blog
+      </Button>
     </div>
-    {currentPage != Page.Home && <div style={styles.upNavigation}>
-      <Button variant="text" sx={upButtonStyles} startIcon={<KeyboardDoubleArrowUpIcon />} onClick={() => setPage(Page.Home)}>Back Up</Button>
-    </div>}
+    {currentPage != Page.Home && (
+      <div style={styles.upNavigation}>
+        <Button
+          variant="text"
+          sx={styles.upButtonStyles}
+          startIcon={<KeyboardDoubleArrowUpIcon />}
+          onClick={() => setPage(Page.Home)}
+        >
+          Back Up
+        </Button>
+      </div>
+    )}
   </div>
 );
 

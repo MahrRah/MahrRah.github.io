@@ -1,15 +1,15 @@
-import Navigation from '../base/Navigation';
+import Header from '../base/Header';
 import { useTransform, useScroll, motion } from 'framer-motion';
 
-const NavigationMotion = ({ scrollRange, opacityRange, currentPage, setPage }) => {
+const HeaderMotion = ({ scrollRange, opacityRange }) => {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, scrollRange, opacityRange);
 
   return (
     <motion.div style={{ opacity: opacity }}>
-      <Navigation currentPage={currentPage} setPage={setPage} />
+      <Header />
     </motion.div>
   );
 };
 
-export default NavigationMotion;
+export default HeaderMotion;

@@ -6,9 +6,9 @@ import Singularity from './Singularity';
 import { progress } from 'popmotion';
 
 const BlackHole = ({
-  colors = ['#2F302E', '#5F6263', '#2b404c', '#4D4636', '#6A6151', '#8C7746', '#BCCEE2',"#202422"],
+  colors = ['#2F302E', '#5F6263', '#2b404c', '#4D4636', '#6A6151', '#8C7746', '#BCCEE2', '#202422'],
   colorBlackhole = '#000000',
-  colorAccretion = '#E8E6E6'
+  colorAccretion = '#E8E6E6',
 }) => {
   const createStars = (count, radius, minRadius, maxRadius, color) =>
     Array.from({ length: count }, (_, i) => (

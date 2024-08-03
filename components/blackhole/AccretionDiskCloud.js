@@ -17,7 +17,7 @@ const AccretionDiskCloud = ({
   gravityMin = 0.3,
   gravityMax = 1,
   gravityDuration = 19000,
-  resetDistance = 0.1
+  resetDistance = 0.1,
 }) => {
   const ref = useRef(null);
   const initialDistance = useRef(mix(initialMinRadius, initialMaxRadius, Math.random()));
@@ -55,15 +55,19 @@ const AccretionDiskCloud = ({
     }
   `;
 
-  const material = useMemo(() => new THREE.ShaderMaterial({
-    uniforms: {
-      color: { value: new THREE.Color(color) },
-      opacity: opacity.current,
-    },
-    vertexShader,
-    fragmentShader,
-    transparent: true,
-  }), [color]);
+  const material = useMemo(
+    () =>
+      new THREE.ShaderMaterial({
+        uniforms: {
+          color: { value: new THREE.Color(color) },
+          opacity: opacity.current,
+        },
+        vertexShader,
+        fragmentShader,
+        transparent: true,
+      }),
+    [color],
+  );
 
   useLayoutEffect(() => {
     ref.current.position.copy(initialPosition);
@@ -79,10 +83,7 @@ const AccretionDiskCloud = ({
     // Apply damping factor to prevent indefinite acceleration
     ref.current.position.setLength(currentLength * gravity * dampingFactor);
 
-    ref.current.position.applyAxisAngle(
-      new THREE.Vector3(0, 1, 0),
-      rotationSpeed
-    );
+    ref.current.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), rotationSpeed);
 
     opacity.current.value = Math.min(maxOpacity, opacity.current.value + opacityIncrement);
 
@@ -92,8 +93,7 @@ const AccretionDiskCloud = ({
     }
 
     material.uniforms.opacity.value = opacity.current.value;
-});
-
+  });
 
   return (
     <mesh ref={ref}>
