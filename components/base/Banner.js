@@ -4,17 +4,16 @@ import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/system';
 
 const styles = {
-  banner: (isHidden) => ({
+  banner: {
     position: 'fixed',
     top: 0,
     left: 0,
     width: '100%',
-    background: '#000000',
     padding: '1rem',
-    display: isHidden ? 'none' : 'block',
+    display: 'block',
     transition: 'display 0.3s ease',
     textAlign: 'center',
-  }),
+  },
   heading: {
     fontFamily: 'lemon-milk',
     color: '#E8E6E6',
@@ -31,10 +30,11 @@ const StyledAvatar = styled(Avatar)({
   marginBottom: -20,
 });
 
+
 // const text = 'Hello There, World!';
 const text = 'Coding, coffee, and a sprinkle of stardust!';
-const Banner = ({ isHidden }) => (
-  <div style={styles.banner(isHidden)}>
+const Banner = () => (
+  <div style={styles.banner}>
     <StyledAvatar alt="User Avatar" src="/logo.png" />
     <h1 style={styles.heading}> {text}</h1>
   </div>
