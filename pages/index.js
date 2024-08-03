@@ -48,29 +48,13 @@ const HomePage = () => {
 
     setIsBannerHidden(scrollTop > 0);
     setIsNavHidden(!(scrollTop > window.innerHeight));
-    setPage(scrollTop > window.innerHeight ? Page.About : Page.Home);
 
-
-    // const windowHeight = window.innerHeight;
-    // const scrollThreshold1 = windowHeight * 0.2;
-    // const scrollThreshold2 = windowHeight * 0.9 ; // Assuming there are 3 sections in total
-
-    // if (scrollTop < scrollThreshold1) {
-    //   setPage(Page.Home);
-    //   setIsNavHidden(true);
-    //   setIsBannerHidden(false);
-    //   setIsFooterHidden(true);
-    // } else if (scrollTop >= scrollThreshold1 && scrollTop < scrollThreshold2) {
-    //   setPage(Page.About);
-    //   setIsNavHidden(false);
-    //   setIsBannerHidden(true);
-    //   setIsFooterHidden(true);
-    // } else {
-    //   setPage(Page.Footer);
-    //   setIsNavHidden(false);
-    //   setIsBannerHidden(true);
-    //   setIsFooterHidden(false);
-    // }
+    if (scrollTop > window.innerHeight) {
+      setPage(Page.About);
+    } else {
+      setPage(Page.Home);
+    }
+    
   };
 
   useEffect(() => {
