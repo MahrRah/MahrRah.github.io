@@ -65,6 +65,7 @@ const HomePage = () => {
     }
   };
 
+
   return (
     <div style={styles.container}>
       <div style={styles.canvasContainer}>
