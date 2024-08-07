@@ -80,7 +80,7 @@ const HomePage = () => {
       <HeaderMotion scrollRange={[0, 0.2, 1]} opacityRange={[1, 0, 0]} />
       <BannerMotion
         scrollRange={[0, 0.1, 0.2, 1]}
-        xMovementRange={['100%', '30%', '30%', '100%']}
+        xMovementRange={['30%', '30%', '30%', '100%']}
         opacityRange={[0.2, 1, 1, 0.2]}
       />
       <NavigationMotion
@@ -89,17 +89,10 @@ const HomePage = () => {
         currentPage={currentPage}
         setPage={switchScene}
       />
-      {currentPage === Page.About && (
-        <AboutMeMotion
-          scrollRange={[0.3, 0.6, 0.8, 1]}
-          xMovementRange={[
-            -window.innerWidth * 0.9,
-            window.innerWidth * 0.01,
-            window.innerWidth * 0.01,
-            -window.innerWidth * 0.9,
-          ]}
-        />
-      )}
+      <AboutMeMotion
+        scrollRange={[0.3, 0.6, 0.8, 1]}
+        xMovementRange={['-90%', '1%', '1%', '-90%']}
+      />
       <FooterMotion scrollRange={[0, 0.9, 0.9, 1]} yMovementRange={[1000, 1000, 0, 0]} />
     </div>
   );

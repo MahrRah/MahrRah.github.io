@@ -23,7 +23,7 @@ const styles = {
   },
 };
 
-const text = '.. with coding, coffee,\n and a sprinkle of stardust!';
+const text = '... with coding, coffee,\n and a sprinkle of stardust!';
 
 const Banner = () => (
   <div style={styles.banner}>
