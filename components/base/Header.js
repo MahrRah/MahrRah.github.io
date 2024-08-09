@@ -29,7 +29,7 @@ const StyledAvatar = styled(Avatar)({
   marginBottom: -20,
 });
 
-const text = 'The Byte Life of Mahra...';
+const text = 'Mahra\'s Blog...';
 
 const Banner = () => (
   <div style={styles.banner}>

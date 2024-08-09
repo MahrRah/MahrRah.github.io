@@ -10,6 +10,8 @@ import NavigationMotion from '../components/motion/NavigationMotion';
 import FooterMotion from '../components/motion/FooterMotion';
 import BannerMotion from '../components/motion/BannerMotion';
 
+
+
 const styles = {
   topSection: {
     position: 'relative',
@@ -33,6 +35,7 @@ const styles = {
 
 const HomePage = () => {
   const [currentPage, setPage] = useState(Page.Home);
+
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
